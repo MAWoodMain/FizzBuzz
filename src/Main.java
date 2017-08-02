@@ -6,6 +6,7 @@ public class Main
 {
     public static void main(String[] args)
     {
+        long startTime = System.currentTimeMillis();
         FizzBuzz fb = new FizzBuzz();
         // add the mappings to the object, the order doesn't matter
         fb.addWord(3,"Fizz");
@@ -16,5 +17,6 @@ public class Main
         String[] output = fb.process(1,100);
         // output the result
         for(String o:output) System.out.println(o);
+        System.out.println("Time taken = " + (System.currentTimeMillis()-startTime) + " ms");
     }
 }
