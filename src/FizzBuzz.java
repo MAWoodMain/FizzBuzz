@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -26,25 +24,21 @@ public class FizzBuzz
         // validate input
         if(min > max) throw new IllegalArgumentException();
 
-        // prepare collection of mods in ascending order
-        final ArrayList<Integer> mods = new ArrayList<>();
-        mods.addAll(modWords.keySet());
-        Collections.sort(mods);
-
         // prepare output array
         final String[] output = new String[1 + (max - min)];
 
         // perform operation and store result
-        for(int i = min; i<=max; i++) output[i - min] = process(i, mods);
+        for(int i = min; i<=max; i++) output[i - min] = process(i);
 
         return output;
     }
 
-    private String process(int value, Collection<Integer> mods)
+    private String process(int value)
     {
         // put the number as the output
         String output = String.valueOf(value);
-        for(int mod:mods)
+        // key set is automatically in ascending order
+        for(int mod:modWords.keySet())
         {
             // if it is a multiple of mod, replace its output with the keyword
             if(value % mod == 0) output = modWords.get(mod);
